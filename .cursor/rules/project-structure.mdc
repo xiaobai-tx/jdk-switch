@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# JDK Switch 项目结构
+
+本项目是一个用于Windows系统的JDK版本切换工具，使用Go语言开发。
+
+## 主要文件结构
+
+- [main.go](mdc:main.go) - 主程序入口，包含命令行解析和交互式界面
+- [config/config.go](mdc:config/config.go) - 配置文件处理模块
+- [jdk/switch.go](mdc:jdk/switch.go) - JDK切换的核心逻辑
+- [jdk/registry.go](mdc:jdk/registry.go) - Windows平台的注册表操作实现
+- [jdk/registry_other.go](mdc:jdk/registry_other.go) - 非Windows平台的注册表操作替代实现
+- [go.mod](mdc:go.mod) - Go模块定义文件
+- [README.md](mdc:README.md) - 项目文档
+- [config.json](mdc:config.json) - 示例配置文件
+
+## 目录说明
+
+- `config/` - 包含配置相关的代码和测试
+- `jdk/` - 包含JDK切换相关的代码和测试
+- `.cursor/rules/` - Cursor编辑器规则文件
+
+## 测试文件
+
+- [config/config_test.go](mdc:config/config_test.go) - 配置模块的测试
+- [jdk/switch_test.go](mdc:jdk/switch_test.go) - JDK切换模块的测试
+
+## 配置文件
+
+配置文件默认保存在系统目录 `C:\jdk-switch\config.json`，包含以下内容：
+- JDK路径映射（版本号 -> 安装路径）
+- 当前使用的JDK版本
+
+## 跨平台支持
+
+虽然主要功能针对Windows平台设计，但项目结构支持跨平台开发：
+- 使用条件编译（build tags）分离Windows和非Windows平台代码
+- 非Windows平台上的函数返回适当的错误信息
+

@@ -46,9 +46,6 @@ C:\jdk-switch\
 *.tmp
 *.bak
 
-# Cursor IDE
-.cursor/
-
 # 环境变量文件
 .env
 .envrc 

@@ -1,0 +1,83 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# JDK Switch 架构设计
+
+本项目采用简单模块化架构，清晰分离不同功能组件。
+
+## 架构概览
+
+```
+用户界面层 (main.go)
+    │
+    ├── 配置管理模块 (config/config.go)
+    │      │
+    │      └── 配置文件 (C:\jdk-switch\config.json)
+    │
+    └── JDK切换模块 (jdk/switch.go)
+            │
+            ├── 注册表操作模块 (jdk/registry.go, jdk/registry_other.go)
+            │      │
+            │      └── 系统注册表
+            │
+            └── 系统环境变量 (JAVA_HOME, PATH, CLASSPATH)
+```
+
+## 模块职责
+
+### 用户界面层 ([main.go](mdc:main.go))
+
+- 处理命令行参数
+- 提供交互式界面
+- 负责流程控制
+- 调用其他模块完成实际功能
+
+### 配置管理模块 ([config/config.go](mdc:config/config.go))
+
+- 定义配置文件结构
+- 读取和保存配置
+- 提供配置初始化功能
+- 管理不同JDK版本的映射关系
+
+### JDK切换模块 ([jdk/switch.go](mdc:jdk/switch.go))
+
+- 验证JDK路径有效性
+- 设置系统环境变量
+- 管理PATH变量中的Java相关条目
+- 设置CLASSPATH环境变量
+- 提供性能监控统计
+
+### 注册表操作模块 ([jdk/registry.go](mdc:jdk/registry.go), [jdk/registry_other.go](mdc:jdk/registry_other.go))
+
+- 提供读取系统环境变量的接口
+- 提供设置系统环境变量的接口
+- 提供环境变量变更广播功能
+- 跨平台兼容性设计
+
+## 数据流
+
+1. 用户通过命令行参数或交互式界面选择JDK版本
+2. 程序从配置文件读取对应版本的JDK路径
+3. 验证JDK路径的有效性
+4. 备份现有环境变量
+5. 读取当前环境变量
+6. 设置系统环境变量（JAVA_HOME, PATH, CLASSPATH）
+7. 广播环境变量变更消息
+8. 更新配置文件中的当前版本
+9. 向用户反馈操作结果和性能数据
+
+## 扩展性设计
+
+- 配置文件格式易于扩展，可添加更多JDK版本
+- 模块化设计使得功能可以独立升级
+- 用户界面与核心逻辑分离，便于未来添加GUI界面
+- 性能监控功能便于识别和优化性能瓶颈
+
+## 性能监控
+
+- 提供关键操作的性能计时
+- 记录环境变量备份、读取、修改和广播的耗时
+- 以明确的格式输出性能数据，方便用户识别潜在的性能问题
+
