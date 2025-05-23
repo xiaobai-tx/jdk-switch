@@ -87,6 +87,14 @@ jdk-switch.exe
 jdk-switch.exe -backup
 ```
 
+## 运行截图
+
+以下是工具的交互式界面截图：
+
+![JDK Switch Tool 运行截图](screenshots/jdk-switch-screenshot.png)
+
+工具会显示当前JDK版本以及所有可用的JDK版本，用户可以输入版本号进行切换。完成后会显示环境变量修改的详细信息和耗时。
+
 ## 环境变量设置
 
 工具会自动设置以下环境变量：

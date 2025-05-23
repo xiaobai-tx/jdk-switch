@@ -89,6 +89,14 @@ Then follow the prompts to enter the JDK version number you want to switch to.
 jdk-switch.exe -backup
 ```
 
+## Screenshots
+
+Below is a screenshot of the tool's interactive interface:
+
+![JDK Switch Tool Screenshot](screenshots/jdk-switch-screenshot.png)
+
+The tool displays the current JDK version and all available JDK versions. Users can enter a version number to switch. After completion, detailed information about environment variable modifications and time usage is displayed.
+
 ## Environment Variable Setup
 
 The tool automatically sets the following environment variables:
