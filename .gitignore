@@ -1,0 +1,54 @@
+# 编译生成的二进制文件
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+jdk-switch
+
+# 测试二进制文件
+*.test
+
+# 覆盖率工具生成的文件
+*.out
+*.prof
+*.cov
+
+# Go特定的忽略项
+/vendor/
+/Godeps/
+.glide/
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# 项目特定的忽略项
+/bin/
+/pkg/
+/out/
+/build/
+
+# 备份文件目录（程序生成的备份）
+C:/jdk-switch/
+C:\jdk-switch\
+
+# Log文件
+*.log
+
+# 依赖缓存
+.cache/
+
+# 编辑器临时文件
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# Cursor IDE
+.cursor/
+
+# 环境变量文件
+.env
+.envrc 
